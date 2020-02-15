@@ -126,15 +126,20 @@ end)
 
 -- NUI Callback - Close
 RegisterNUICallback('escape', function(data, cb)
-
+local ped = GetPlayerPed(-1)
+		
     disablechatmdtpd = false
 
     EnableControlAction(0, 245, true)
     EnableControlAction(0, 309, true)
+    DeleteEntity(tab, GetPlayerPed(-1), GetPedBoneIndex(GetPlayerPed(-1), 18905), 0.12, 0.05, 0.13, -10.5, 180.0, 180.0, true, true, false, true, 1, true)    
+    ClearPedTasksImmediately(ped)
     Citizen.Wait(1000)
 
 	SetNuiFocus(false, false)
 	cb('ok')
+
+
 end)
 
 -- NUI Callback - Fetch
